@@ -204,4 +204,12 @@ return {
     "wakatime/vim-wakatime",
     lazy = false,
   },
+
+  -- Typr plguin for typing inside neovim
+  {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
+  },
 }
