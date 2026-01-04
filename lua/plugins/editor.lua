@@ -158,4 +158,44 @@ return {
       }
     end,
   },
+
+  -- logo
+  {
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
+    enabled = true,
+    lazy = false,
+    priority = 1000,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      local logo = [[
+      __________           .___ ___________                    
+      \______   \ ____   __| _/ \__    ___/___ _____    _____  
+      |       _// __ \ / __ |    |    |_/ __ \\__  \  /     \ 
+      |    |   \  ___// /_/ |    |    |\  ___/ / __ \|  Y Y  \
+      |____|_  /\___  >____ |    |____| \___  >____  /__|_|  /
+      \/     \/     \/               \/     \/      \/ 
+      ]]
+
+      logo = string.rep("\n", 8) .. logo .. "\n\n"
+
+      local footer = {
+        "",
+        "",
+        "My Coding Playground 🗿",
+        "Low-Level | Functional | Scripting | Red Team",
+        "",
+        "C | C++ | Go | Rust | Zig | OCaml | Haskell | Lua | Red Team",
+        "",
+      }
+
+      require("dashboard").setup({
+        theme = "hyper", --or "doom"
+        config = {
+          header = vim.split(logo, "\n"),
+          footer = footer,
+        },
+      })
+    end,
+  },
 }
