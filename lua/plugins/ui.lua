@@ -2,10 +2,16 @@ return {
   {
     "folke/noice.nvim",
     opts = function(_, opts)
+      opts.routes = opts.routes or {}
+
       table.insert(opts.routes, {
         filter = {
           event = "notify",
-          find = "No information available",
+          kind = "info",
+          any = {
+            { find = "Neo%-tree INFO] Toggling hidden files" },
+            { find = "No information available" },
+          },
         },
         opts = { skip = true },
       })
