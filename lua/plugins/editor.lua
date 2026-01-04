@@ -198,4 +198,10 @@ return {
       })
     end,
   },
+
+  -- wakatime
+  {
+    "wakatime/vim-wakatime",
+    lazy = false,
+  },
 }
