@@ -2,10 +2,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function()
-      local ts = require("vim.treesitter")
-
-      local languages = {
+    opts = {
+        ensure_installed = {
         -- Systems / compiled languages
         "c",
         "cpp",
@@ -43,18 +41,7 @@ return {
         "cmake",
         "make",
         "gitignore",
-      }
-
-      -- install parsers for all languages
-      pcall(require("nvim-treesitter.install").ensure_installed, languages)
-
-      -- enable highlighting per buffer
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "*",
-        callback = function()
-          pcall(ts.start) -- start treesitter for the buffer
-        end,
-      })
-    end,
-  },
+        }
+    }
+  }
 }
