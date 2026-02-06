@@ -9,31 +9,31 @@ local transparent_opts = {
 return {
   {
     "craftzdog/solarized-osaka.nvim",
-    lazy = true,
+    lazy = false,
     priority = 1000,
     opts = transparent_opts,
   },
 
   {
     "oskarnurm/koda.nvim",
-    lazy = false,
+    lazy = true,
     opts = transparent_opts,
   },
 
   {
     "vague-theme/vague.nvim",
-    lazy = false,
+    lazy = true,
     opts = transparent_opts,
   },
 
   {
     "tiagovla/tokyodark.nvim",
-    lazy = false,
+    lazy = true,
   },
 
   {
     "rose-pine/neovim",
-    lazy = false,
+    lazy = true,
     name = "rose-pine",
     opts = transparent_opts,
   },
