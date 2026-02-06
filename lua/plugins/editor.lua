@@ -313,7 +313,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
-      log_leve = "fatal",
+      log_level = "fatal",
 
       sources = { "filesystem", "buffers", "git_status" },
 
