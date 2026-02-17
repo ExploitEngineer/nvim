@@ -14,7 +14,7 @@ return {
       desc = "Find Plugin File",
     },
     {
-      ";f",
+      "<leader>ff",
       function()
         local builtin = require("telescope.builtin")
         builtin.find_files({
@@ -22,13 +22,15 @@ return {
           hidden = true,
         })
       end,
+      desc = "Find Files",
     },
     {
-      ";r",
+      "<leader>fg",
       function()
         local builtin = require("telescope.builtin")
         builtin.live_grep()
       end,
+      desc = "Live Grep",
     },
     {
       "\\\\",
@@ -38,32 +40,36 @@ return {
       end,
     },
     {
-      ";t",
+      "<leader>fh",
       function()
         local builtin = require("telescope.builtin")
         builtin.help_tags()
       end,
+      desc = "Help Tags",
     },
     {
-      ";;",
+      "<leader>fr",
       function()
         local builtin = require("telescope.builtin")
         builtin.resume()
       end,
+      desc = "Resume Telescope",
     },
     {
-      ";e",
+      "<leader>fd",
       function()
         local builtin = require("telescope.builtin")
         builtin.diagnostics()
       end,
+      desc = "Diagnostics Picker",
     },
     {
-      ";s",
+      "<leader>fs",
       function()
         local builtin = require("telescope.builtin")
         builtin.treesitter()
       end,
+      desc = "Treesitter Symbols",
     },
     {
       "sf",
@@ -145,7 +151,18 @@ return {
   end,
   {
     "folke/flash.nvim",
-    enabled = false,
+    opts = {
+      modes = {
+        char = {
+          -- Keep native `;` and `,` repeat behavior for f/F/t/T.
+          keys = { "f", "F", "t", "T" },
+          jump_labels = true,
+        },
+      },
+      highlight = {
+        backdrop = true,
+      },
+    },
   },
 
   -- animations
