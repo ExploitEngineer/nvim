@@ -30,10 +30,6 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
-    keys = {
-      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-      { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-    },
     opts = {
       options = {
         mode = "buffers",
@@ -49,7 +45,7 @@ return {
     event = "VeryLazy",
     opts = {
       options = {
-        theme = "solarized_dark",
+        theme = "catppuccin",
       },
     },
   },

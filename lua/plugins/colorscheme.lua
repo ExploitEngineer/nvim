@@ -1,40 +1,34 @@
-local transparent_opts = {
-  transparent = true,
-  styles = {
-    sidebars = "transparent",
-    floats = "transparent",
-  },
-}
-
 return {
   {
-    "craftzdog/solarized-osaka.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,
     priority = 1000,
-    opts = transparent_opts,
-  },
-
-  {
-    "oskarnurm/koda.nvim",
-    lazy = true,
-    opts = transparent_opts,
-  },
-
-  {
-    "vague-theme/vague.nvim",
-    lazy = true,
-    opts = transparent_opts,
-  },
-
-  {
-    "tiagovla/tokyodark.nvim",
-    lazy = true,
-  },
-
-  {
-    "rose-pine/neovim",
-    lazy = true,
-    name = "rose-pine",
-    opts = transparent_opts,
+    opts = {
+      flavour = "mocha",
+      transparent_background = true,
+      term_colors = true,
+      integrations = {
+        cmp = true,
+        gitsigns = true,
+        illuminate = true,
+        indent_blankline = { enabled = true },
+        mason = true,
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+          },
+        },
+        noice = true,
+        notify = true,
+        telescope = true,
+        treesitter = true,
+        which_key = true,
+      },
+    },
   },
 }
