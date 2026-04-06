@@ -50,8 +50,7 @@ Defaults are respected unless there is a strong reason to improve them. The goal
 ~/.config/nvim
 ├── init.lua
 ├── lua/
-│   ├── config/        # autocmds, keymaps, options
-│   ├── lazy/          # lazy.nvim setup & plugin specs
+│   ├── config/        # lazy.lua, autocmds, keymaps, options
 │   ├── craftzdog/     # custom hacks (cowboy-style tweaks)
 │   └── plugins/       # individual plugin configurations
 ```
@@ -79,7 +78,7 @@ Plugins will install automatically on first launch.
 ## 🛠 Customization Notes
 
 * Global options, keymaps, and autocmds live in `lua/config/`
-* Plugins are declared and managed under `lua/lazy/`
+* Plugins are declared and managed under `lua/plugins/`
 * Individual plugin behavior is isolated in `lua/plugins/`
 * Experimental or unconventional tweaks belong in `lua/craftzdog/`
 
