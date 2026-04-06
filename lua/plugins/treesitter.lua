@@ -2,46 +2,48 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    opts = {
-        ensure_installed = {
-        -- Systems / compiled languages
-        "c",
-        "cpp",
-        "rust",
-        "go",
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
 
-        -- Web / Full‑stack languages
-        "javascript",
-        "typescript",
-        "tsx",
-        "html",
-        "css",
-        "php",
-        "graphql",
-        "svelte",
-        "astro",
-        "scss",
-        "sql",
-
-        -- Scripting / tooling
+      vim.list_extend(opts.ensure_installed, {
         "bash",
-        "lua",
+        "c",
+        "cmake",
+        "cpp",
+        "css",
+        "dockerfile",
+        "gitignore",
+        "go",
+        "graphql",
+        "html",
+        "javascript",
         "json",
         "json5",
+        "lua",
+        "luadoc",
+        "make",
         "markdown",
         "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "rust",
+        "scss",
+        "sql",
+        "svelte",
+        "toml",
+        "tsx",
+        "typescript",
         "vim",
         "vimdoc",
         "yaml",
-        "toml",
+      })
 
-        -- Useful extra languages
-        "python",
-        "dockerfile",
-        "cmake",
-        "make",
-        "gitignore",
-        }
-    }
-  }
+      opts.auto_install = true
+      opts.highlight = opts.highlight or {}
+      opts.highlight.additional_vim_regex_highlighting = false
+      opts.indent = opts.indent or {}
+      opts.indent.enable = true
+    end,
+  },
 }
