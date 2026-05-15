@@ -16,14 +16,15 @@ return {
         opts = { skip = true },
       })
 
-      -- Enable border on notify box
-      -- opts.presets.lsp_doc_border = true
+      opts.presets = opts.presets or {}
+      opts.presets.lsp_doc_border = true
     end,
   },
+
   {
     "rcarriga/nvim-notify",
     opts = {
-      timeout = 10000,
+      timeout = 3000,
     },
   },
 
@@ -50,11 +51,39 @@ return {
     opts = {
       options = {
         theme = "solarized_dark",
+        globalstatus = true,
+        disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+      },
+      sections = {
+        lualine_a = { "mode" },
+        lualine_b = {
+          { "branch", icon = "" },
+          "diff",
+          "diagnostics",
+        },
+        lualine_c = { { "filename", path = 1 } },
+        lualine_x = {
+          {
+            function()
+              local clients = vim.lsp.get_clients({ bufnr = 0 })
+              if #clients == 0 then return "" end
+              local names = {}
+              for _, c in ipairs(clients) do
+                table.insert(names, c.name)
+              end
+              return " " .. table.concat(names, ", ")
+            end,
+          },
+          "encoding",
+          { "filetype", icon_only = false },
+        },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
       },
     },
   },
 
-  -- filename
+  -- filename in winbar
   {
     "b0o/incline.nvim",
     event = "VeryLazy",
@@ -90,5 +119,39 @@ return {
         end,
       })
     end,
+  },
+
+  -- snacks dashboard
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        enabled = true,
+        preset = {
+          header = [[
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+          keys = {
+            { icon = " ", key = "f", desc = "Find File",       action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "g", desc = "Live Grep",       action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { icon = " ", key = "r", desc = "Recent Files",    action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            { icon = " ", key = "c", desc = "Config",          action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+            { icon = "󰒲 ", key = "l", desc = "Lazy",            action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { icon = " ", key = "q", desc = "Quit",            action = ":qa" },
+          },
+        },
+        sections = {
+          { section = "header" },
+          { section = "keys",         gap = 1, padding = 1 },
+          { section = "recent_files", limit = 5, padding = 1 },
+          { section = "startup" },
+        },
+      },
+    },
   },
 }

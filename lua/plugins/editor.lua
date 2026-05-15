@@ -176,35 +176,6 @@ return {
     end,
   },
 
-  -- logo
-  {
-    "nvimdev/dashboard-nvim",
-    event = "VimEnter",
-    enabled = true,
-    lazy = false,
-    priority = 1000,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      local logo = [[
-                         .__         
-  ____   ____  _______  _|__| _____  
- /    \_/ __ \/  _ \  \/ /  |/     \ 
-|   |  \  ___(  <_> )   /|  |  Y Y  \
-|___|  /\___  >____/ \_/ |__|__|_|  /
-     \/     \/                    \/ 
-      ]]
-
-      logo = string.rep("\n", 8) .. logo .. "\n\n"
-
-      require("dashboard").setup({
-        theme = "hyper", --or "doom"
-        config = {
-          header = vim.split(logo, "\n"),
-        },
-      })
-    end,
-  },
-
   -- wakatime
   {
     "wakatime/vim-wakatime",
